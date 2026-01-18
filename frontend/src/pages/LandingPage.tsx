@@ -6,25 +6,26 @@ import { useEffect, useRef, useState } from 'react';
 const features = [
   {
     icon: Circle,
-    title: 'Relationship Awareness',
-    description: 'Track the state of your connections without judgment. See where attention is needed.',
+    title: 'Track Relationships',
+    description: 'Add people who matter. Mark when you last connected. Notice who needs attention.',
   },
   {
     icon: Sparkles,
-    title: 'Gentle AI Reflection',
-    description: 'Receive calm, supportive insights. No diagnosis. No pressure. Just presence.',
+    title: 'Private Messages',
+    description: "Write things you need to say but aren't ready to send. Keep them or send them later.",
   },
   {
     icon: Scale,
-    title: 'Financial Obligations',
-    description: 'Track debts and obligations. Ensure nothing is left unresolved when you are gone.',
+    title: 'Financial Records',
+    description: 'Track debts and obligations so nothing is forgotten or left unresolved.',
   },
   {
     icon: Lock,
     title: 'Legacy Vault',
-    description: 'Words for when you cannot speak them. Encrypted. Sacred. Released with intention.',
+    description: 'Messages delivered only if something happens to you. Encrypted until then.',
   },
 ];
+
 
 
 
@@ -83,8 +84,6 @@ export function LandingPage() {
         }}
       />
       
-      {/* Animated background decorations - stars, hearts, birds, dots */}
-      <BackgroundDecorations />
       
       {/* Content */}
       <div className="relative z-10 flex flex-col">
@@ -111,22 +110,22 @@ export function LandingPage() {
         <main className="flex flex-col items-center justify-center px-4 md:px-8 py-16 md:py-24">
           <div className="text-center max-w-3xl">
             <h1 className="font-serif-display text-3xl md:text-5xl lg:text-[3.5rem] font-medium text-white tracking-tight leading-[1.15] mb-5 md:mb-6 stagger-2">
-              A sanctuary for the
+              A private space for your
               <br />
-              <span style={{ color: '#a78bfa' }}>connections that matter</span>
+              <span style={{ color: '#a78bfa' }}>relationships and legacy</span>
             </h1>
             
             <p 
-              className="text-sm md:text-base lg:text-lg mb-8 md:mb-10 max-w-xl mx-auto stagger-3"
-              style={{ color: '#9ca3af', lineHeight: '1.75' }}
+              className="text-sm md:text-base lg:text-lg mb-8 md:mb-10 max-w-2xl mx-auto stagger-3"
+              style={{ color: '#d1d5db', lineHeight: '1.8' }}
             >
-              This is not a social network. It is a quiet space to reflect on your relationships, 
-              check in with yourself, and leave messages for those you love.
+              Track the people who matter to you. Write messages you're not ready to send. 
+              Leave words for when you're gone. Everything stays private until you decide otherwise.
             </p>
             
             <div className="stagger-3">
               <Link to="/register" className="calm-button-primary">
-                Enter the Sanctuary
+                Create Your Space
               </Link>
             </div>
           </div>
@@ -158,8 +157,57 @@ export function LandingPage() {
           </div>
         </main>
 
+        {/* Clarity Section - What this is / What this is not */}
+        <section className="py-16 md:py-20 px-6 md:px-12 relative">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              {/* What this is */}
+              <div className="space-y-4">
+                <h3 
+                  className="text-xs uppercase tracking-[0.2em] mb-6"
+                  style={{ color: '#6b7280' }}
+                >
+                  What this is
+                </h3>
+                <div className="space-y-3">
+                  <p className="text-sm md:text-base" style={{ color: '#d1d5db', lineHeight: '1.7' }}>
+                    A place to notice which relationships feel steady and which feel distant.
+                  </p>
+                  <p className="text-sm md:text-base" style={{ color: '#d1d5db', lineHeight: '1.7' }}>
+                    A way to write things down before you forget or lose the courage.
+                  </p>
+                  <p className="text-sm md:text-base" style={{ color: '#d1d5db', lineHeight: '1.7' }}>
+                    A vault for messages that get delivered only if something happens to you.
+                  </p>
+                </div>
+              </div>
+
+              {/* What this is not */}
+              <div className="space-y-4">
+                <h3 
+                  className="text-xs uppercase tracking-[0.2em] mb-6"
+                  style={{ color: '#6b7280' }}
+                >
+                  What this is not
+                </h3>
+                <div className="space-y-3">
+                  <p className="text-sm md:text-base" style={{ color: '#9ca3af', lineHeight: '1.7' }}>
+                    Not a social network. No one sees your activity.
+                  </p>
+                  <p className="text-sm md:text-base" style={{ color: '#9ca3af', lineHeight: '1.7' }}>
+                    Not therapy. Just a quiet tool for awareness.
+                  </p>
+                  <p className="text-sm md:text-base" style={{ color: '#9ca3af', lineHeight: '1.7' }}>
+                    Not urgent. Nothing here pressures you to act.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ============================================ */}
-        {/* SECTION 1 — Unspoken Words */}
+        {/* SECTION 1 — Messages You're Not Ready to Send */}
         {/* ============================================ */}
         <section ref={section1Ref} className="py-28 md:py-40 px-6 md:px-12 relative">
           <div className="max-w-6xl mx-auto">
@@ -186,7 +234,7 @@ export function LandingPage() {
                   >
                     <img 
                       src="/unspoken-words.png" 
-                      alt="Unspoken words illustration" 
+                      alt="Messages illustration" 
                       className="w-48 h-48 md:w-56 md:h-56 object-contain"
                       style={{ filter: 'drop-shadow(0 0 20px rgba(167, 139, 250, 0.4))' }}
                     />
@@ -206,40 +254,26 @@ export function LandingPage() {
                 <h2 
                   className="font-serif-display text-2xl md:text-3xl lg:text-4xl font-medium text-white tracking-tight leading-snug"
                 >
-                  Never keep your unspoken words.
+                  Write it down, even if you never send it.
                 </h2>
                 
                 <div 
-                  className="space-y-6"
-                  style={{ color: '#b8b8c0', lineHeight: '1.9' }}
+                  className="space-y-5"
+                  style={{ color: '#d1d5db', lineHeight: '1.8' }}
                 >
                   <p className="text-sm md:text-base">
-                    Some words stay quiet not because they are unimportant,
-                    but because the moment never felt right.
-                  </p>
-                  
-                  <p className="text-sm md:text-base" style={{ color: '#9090a0' }}>
-                    A thank you you meant to say.
-                    <br />
-                    An apology you rehearsed but never sent.
-                    <br />
-                    A truth you carried for years.
+                    Sometimes you need to say something but the timing isn't right.
+                    Or you're not sure how they'll react. Or you just need to get it out of your head.
                   </p>
                   
                   <p className="text-sm md:text-base">
-                    This space exists so those words do not disappear with time.
+                    Write messages to the people in your life. Keep them private. 
+                    Send them when you're ready, or never send them at all.
                   </p>
-                </div>
-                
-                <div className="space-y-2 pt-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-purple-400" style={{ filter: 'drop-shadow(0 0 4px rgba(167, 139, 250, 0.6))' }}>✦</span>
-                    <p className="text-xs md:text-sm" style={{ color: '#6b7280' }}>You do not have to send them.</p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-purple-400" style={{ filter: 'drop-shadow(0 0 4px rgba(167, 139, 250, 0.6))' }}>✦</span>
-                    <p className="text-xs md:text-sm" style={{ color: '#6b7280' }}>You just have to let them exist.</p>
-                  </div>
+                  
+                  <p className="text-sm md:text-base" style={{ color: '#b8b8c0' }}>
+                    The act of writing it down is often enough.
+                  </p>
                 </div>
               </div>
             </div>
@@ -247,7 +281,7 @@ export function LandingPage() {
         </section>
 
         {/* ============================================ */}
-        {/* SECTION 2 — Emotional Intelligence */}
+        {/* SECTION 2 — Track Your Relationships */}
         {/* ============================================ */}
         <section ref={section2Ref} className="py-24 md:py-36 px-6 md:px-12 relative">
           {/* Subtle divider lines */}
@@ -274,51 +308,26 @@ export function LandingPage() {
                 <h2 
                   className="font-serif-display text-2xl md:text-3xl lg:text-4xl font-medium text-white tracking-tight leading-snug"
                 >
-                  Emotional intelligence begins with noticing.
+                  See which relationships need attention.
                 </h2>
                 
-                <p 
-                  className="text-sm md:text-base"
-                  style={{ color: '#b8b8c0', lineHeight: '1.9' }}
+                <div
+                  className="space-y-5"
+                  style={{ color: '#d1d5db', lineHeight: '1.8' }}
                 >
-                  This is not about expressing everything.
-                  <br />
-                  It is about recognizing what matters before it fades.
-                </p>
-                
-                <p 
-                  className="text-sm md:text-base"
-                  style={{ color: '#9090a0', lineHeight: '1.9' }}
-                >
-                  Which relationships feel steady.
-                  <br />
-                  Which feel distant.
-                  <br />
-                  Which carry weight you have been avoiding.
-                </p>
-                
-                <p 
-                  className="text-sm md:text-base"
-                  style={{ color: '#b8b8c0', lineHeight: '1.9' }}
-                >
-                  Awareness comes before action.
-                  <br />
-                  And sometimes, awareness is enough.
-                </p>
-                
-                <div className="space-y-2 pt-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-purple-400" style={{ filter: 'drop-shadow(0 0 4px rgba(167, 139, 250, 0.6))' }}>✦</span>
-                    <p className="text-xs md:text-sm" style={{ color: '#6b7280' }}>No labels.</p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-purple-400" style={{ filter: 'drop-shadow(0 0 4px rgba(167, 139, 250, 0.6))' }}>✦</span>
-                    <p className="text-xs md:text-sm" style={{ color: '#6b7280' }}>No judgment.</p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-purple-400" style={{ filter: 'drop-shadow(0 0 4px rgba(167, 139, 250, 0.6))' }}>✦</span>
-                    <p className="text-xs md:text-sm" style={{ color: '#6b7280' }}>Just clarity.</p>
-                  </div>
+                  <p className="text-sm md:text-base">
+                    Add the people who matter to you. Mark when you last connected. 
+                    Notice patterns you might have missed.
+                  </p>
+                  
+                  <p className="text-sm md:text-base">
+                    This isn't about productivity or optimization. 
+                    It's about awareness. Sometimes just seeing it written down is enough to know what to do next.
+                  </p>
+                  
+                  <p className="text-sm md:text-base" style={{ color: '#b8b8c0' }}>
+                    No reminders. No guilt. Just a quiet place to check in with yourself.
+                  </p>
                 </div>
               </div>
               
@@ -344,7 +353,7 @@ export function LandingPage() {
                   >
                     <img 
                       src="/emotional-intelligence.png" 
-                      alt="Emotional intelligence illustration" 
+                      alt="Relationship tracking illustration" 
                       className="w-48 h-48 md:w-56 md:h-56 object-contain"
                       style={{ filter: 'drop-shadow(0 0 20px rgba(167, 139, 250, 0.4))' }}
                     />
@@ -356,7 +365,7 @@ export function LandingPage() {
         </section>
 
         {/* ============================================ */}
-        {/* SECTION 3 — Even After You Go */}
+        {/* SECTION 3 — Legacy Messages */}
         {/* ============================================ */}
         <section ref={section3Ref} className="py-28 md:py-40 px-6 md:px-12 relative">
           <div className="max-w-6xl mx-auto">
@@ -383,7 +392,7 @@ export function LandingPage() {
                   >
                     <img 
                       src="/legacy-vault.png" 
-                      alt="Legacy vault illustration" 
+                      alt="Legacy messages illustration" 
                       className="w-48 h-48 md:w-56 md:h-56 object-contain"
                       style={{ filter: 'drop-shadow(0 0 20px rgba(167, 139, 250, 0.4))' }}
                     />
@@ -403,59 +412,54 @@ export function LandingPage() {
                 <h2 
                   className="font-serif-display text-2xl md:text-3xl lg:text-4xl font-medium text-white tracking-tight leading-snug"
                 >
-                  Even after you go, you can still make things right.
+                  Leave messages for after you're gone.
                 </h2>
                 
                 <div 
-                  className="space-y-6"
-                  style={{ color: '#b8b8c0', lineHeight: '1.9' }}
+                  className="space-y-5"
+                  style={{ color: '#d1d5db', lineHeight: '1.8' }}
                 >
                   <p className="text-sm md:text-base">
-                    Life does not always leave room for closure.
-                  </p>
-                  
-                  <p className="text-sm md:text-base" style={{ color: '#9090a0' }}>
-                    Sometimes we leave too early.
-                    <br />
-                    Sometimes we run out of courage.
-                    <br />
-                    Sometimes we assume there will be more time.
+                    Write letters to be delivered only if something happens to you. 
+                    Encrypted and stored securely. Released only through a process you control.
                   </p>
                   
                   <p className="text-sm md:text-base">
-                    This space exists for the words you would want carried forward —
-                    gently, privately, and only if the time comes.
+                    An apology you want them to hear. 
+                    Instructions for what to do with your things. 
+                    Words you'd want them to remember you by.
                   </p>
-                </div>
-                
-                <div className="space-y-2 pt-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-purple-400" style={{ filter: 'drop-shadow(0 0 4px rgba(167, 139, 250, 0.6))' }}>✦</span>
-                    <p className="text-xs md:text-sm" style={{ color: '#6b7280' }}>Nothing here is automatic.</p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-purple-400" style={{ filter: 'drop-shadow(0 0 4px rgba(167, 139, 250, 0.6))' }}>✦</span>
-                    <p className="text-xs md:text-sm" style={{ color: '#6b7280' }}>Nothing is released without intention.</p>
-                  </div>
+                  
+                  <p className="text-sm md:text-base" style={{ color: '#b8b8c0' }}>
+                    You decide who receives what, and when. Nothing happens automatically.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Closing Section - Lingering Thought */}
+        <section className="py-20 md:py-28 px-6 md:px-12 relative">
+          <div className="max-w-2xl mx-auto text-center">
+            <p 
+              className="font-serif-display text-lg md:text-xl lg:text-2xl font-normal text-white leading-relaxed"
+              style={{ lineHeight: '1.7' }}
+            >
+              We spend our lives managing what's visible.
+              <br />
+              This is a place for everything else.
+            </p>
+          </div>
+        </section>
+
         {/* Footer */}
         <footer className="py-12 md:py-16 flex flex-col items-center justify-center relative">
           <p 
-            className="font-script text-sm md:text-base mb-3"
-            style={{ color: '#6b7280' }}
+            className="text-xs"
+            style={{ color: '#6b7280', letterSpacing: '0.08em' }}
           >
-            Built with heart, not haste
-          </p>
-          <p 
-            className="text-[0.65rem] md:text-xs"
-            style={{ color: '#4b5563', letterSpacing: '0.05em' }}
-          >
-            Some things deserve to be handled carefully.
+            I Am Only Human
           </p>
 
         </footer>

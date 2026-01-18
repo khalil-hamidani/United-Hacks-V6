@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Sanctuary } from '../components/Sanctuary';
+import GhostCursor from '../components/GhostCursor';
 import { authApi } from '../api';
 
 export function RegisterPage() {
@@ -40,6 +41,21 @@ export function RegisterPage() {
 
   return (
     <Sanctuary>
+      <GhostCursor
+        color="#b19eef"
+        brightness={1.0}
+        edgeIntensity={0}
+        trailLength={8}
+        inertia={0.6}
+        grainIntensity={0.02}
+        bloomStrength={0.1}
+        bloomRadius={0.5}
+        bloomThreshold={0.025}
+        fadeDelayMs={800}
+        fadeDurationMs={1200}
+        mixBlendMode="normal"
+        zIndex={15}
+      />
       <div className="min-h-screen flex items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-md animate-fade-in-up">
           <div className="text-center mb-8 md:mb-12">
