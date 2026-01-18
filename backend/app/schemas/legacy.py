@@ -31,16 +31,19 @@ class RecipientResponse(BaseModel):
 class LegacyItemCreate(BaseModel):
     title: str
     content: str
+    recipient_ids: List[str]  # NEW: List of recipient IDs to assign this item to
 
 
 class LegacyItemUpdate(BaseModel):
     title: Optional[str] = None
     content: Optional[str] = None
+    recipient_ids: Optional[List[str]] = None  # NEW: Update recipient assignments
 
 
 class LegacyItemResponse(BaseModel):
     id: str
     title: str
+    recipient_ids: List[str]  # NEW: List of assigned recipient IDs
     created_at: datetime
     updated_at: datetime
 
@@ -56,7 +59,15 @@ class DecryptedLegacyItem(BaseModel):
     updated_at: datetime
 
 
-class SimulatedReleaseResponse(BaseModel):
+class RecipientWithItems(BaseModel):
+    """Response for simulate-release grouped by recipient"""
+
     recipient: RecipientResponse
     legacy_items: List[DecryptedLegacyItem]
+
+
+class SimulatedReleaseResponse(BaseModel):
+    """Updated to support multiple recipients"""
+
+    recipients: List[RecipientWithItems]  # Changed from single recipient to list
     message: str

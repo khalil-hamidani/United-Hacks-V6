@@ -8,14 +8,21 @@ from fastapi.responses import JSONResponse
 from app.api.ai import router as ai_router
 from app.api.auth import router as auth_router
 from app.api.checkin import router as checkin_router
+from app.api.demo import router as demo_router
 from app.api.legacy import router as legacy_router
+from app.api.obligations import router as obligations_router
 from app.api.relationships import router as relationships_router
+from app.api.trusted_person import router as trusted_person_router
 from app.core.config import settings
 from app.db.base import Base
 from app.db.session import engine
-from app.models.checkin import Checkin  # noqa: F401
-from app.models.legacy import LegacyItem, TrustedRecipient  # noqa: F401
-from app.models.relationship import Relationship  # noqa: F401
+from app.models.checkin import Checkin
+from app.models.financial_obligation import FinancialObligation
+from app.models.legacy import LegacyItem, TrustedRecipient
+from app.models.notification import NotificationLog, ReleaseEvent
+from app.models.obligation_audit_log import ObligationAuditLog
+from app.models.relationship import Relationship
+from app.models.trusted_person import TrustedPerson
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -35,9 +42,6 @@ async def lifespan(app: FastAPI):
     logger.info("Shutting down application...")
 
 
-# DEMO NOTE: This is a hackathon demo application.
-# Legacy vault simulate-release is for demonstration only.
-# In production, implement proper notification systems.
 app = FastAPI(
     title="I Am Only Human",
     description="Backend API for I Am Only Human - A human-centered relationship reflection tool",
@@ -68,3 +72,8 @@ app.include_router(relationships_router)
 app.include_router(ai_router)
 app.include_router(checkin_router)
 app.include_router(legacy_router)
+app.include_router(demo_router)
+app.include_router(obligations_router, prefix="/api/obligations", tags=["obligations"])
+app.include_router(
+    trusted_person_router, prefix="/api/trusted-person", tags=["trusted-person"]
+)

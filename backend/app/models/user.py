@@ -24,3 +24,12 @@ class User(Base):
     relationships = relationship(
         "Relationship", back_populates="user", cascade="all, delete-orphan"
     )
+    financial_obligations = relationship(
+        "FinancialObligation", back_populates="user", cascade="all, delete-orphan"
+    )
+    trusted_person = relationship(
+        "TrustedPerson",
+        back_populates="user",
+        uselist=False,
+        cascade="all, delete-orphan",
+    )

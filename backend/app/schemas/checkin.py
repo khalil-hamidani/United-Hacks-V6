@@ -20,7 +20,7 @@ class CheckinConfirmResponse(BaseModel):
 
 
 class CheckinConfigUpdate(BaseModel):
-    interval_days: int = Field(..., ge=1, le=365)
+    interval_days: int = Field(ge=1, le=730)  # 1 day to 2 years65)
 
 
 class CheckinConfigResponse(BaseModel):
